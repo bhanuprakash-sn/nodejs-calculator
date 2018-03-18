@@ -109,7 +109,7 @@ class Calculator extends React.Component {
 	render()
 	{
 		return(
-			<div>
+			<div id="calcContainer">
 				<form id="calcForm">
 					<span>Please input the first number:</span><input type="number" name="valueA" onChange={this.handleInputChange} required="required"/><br/>
 					<span>Please input the second number:</span><input type="number" name="valueB" onChange={this.handleInputChange} required="required"/><br/>
@@ -130,7 +130,7 @@ class Calculator extends React.Component {
 			        <button onClick={this.onSumbit}>Calculate</button>
 				</form>
 				<div>
-					<span id="calcResult">{this.state.result}</span>
+					<span id="calcResult">Result: {this.state.result}</span>
 				</div>
 			</div>
 			
