@@ -9,6 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      	<h1 className="calc-header">Smart Calculator</h1>
         <Calculator />
       </div>
     );

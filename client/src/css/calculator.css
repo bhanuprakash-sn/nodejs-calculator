@@ -25,6 +25,12 @@
 {
 	font-size: 2rem;
 }
+.calc-header{
+	text-align: center;
+    font-size: 4rem;
+    font-style: italic;
+    color: indianred;
+}
 .calc-label
 {
 	margin-right: 1.5rem;
