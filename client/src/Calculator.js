@@ -50,6 +50,28 @@ class Calculator extends React.Component {
 		return apiPath;
 	}
 
+	inputValidation()
+	{
+		var valueA = this.state.input.valueA;
+		var valueB = this.state.input.valueB;
+		var operation = this.state.input.operation;
+		if(valueA === "")
+		{
+			alert("Must provide a number A");
+			return false;
+		}
+		if(valueB === "")
+		{
+			alert("Must provide a number B");
+			return false;
+		}
+		if(operation==="")
+		{
+			alert("Must provide an operation");
+			return false;
+		}
+	}
+
 	onSumbit(e)
 	{
 		e.preventDefault();
@@ -78,13 +100,28 @@ class Calculator extends React.Component {
 	render()
 	{
 		return(
-			<form id="calcForm">
-				<span>Please input the first number:</span><input type="number" name="valueA" onChange={this.handleInputChange} required="required"/><br/>
-				<span>Please input the second number:</span><input type="number" name="valueB" onChange={this.handleInputChange} required="required"/><br/>
-				
-				
-		        <button onClick={this.onSumbit}>Calculate</button>
-			</form>
+			<div>
+				<form id="calcForm">
+					<span>Please input the first number:</span><input type="number" name="valueA" onChange={this.handleInputChange} required="required"/><br/>
+					<span>Please input the second number:</span><input type="number" name="valueB" onChange={this.handleInputChange} required="required"/><br/>
+					<div>
+					    <input type="radio" id="operation1" name="operation" value="ADD" onChange={this.handleInputChange} />
+					    <label for="operation1">Addition</label>
+
+					    <input type="radio" id="operation2" name="operation" value="SUB" onChange={this.handleInputChange} />
+					    <label for="operation2">Subtraction</label>
+
+					    <input type="radio" id="operation3" name="operation" value="MUL" onChange={this.handleInputChange} />
+					    <label for="operation3">Multiplication</label>
+
+					    <input type="radio" id="operation3" name="operation" value="DIV" onChange={this.handleInputChange} />
+					    <label for="operation3">Division</label>
+					</div>
+					
+			        <button onClick={this.onSumbit}>Calculate</button>
+				</form>
+			</div>
+			
 		)
 	}
 }
