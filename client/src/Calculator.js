@@ -10,12 +10,14 @@ class Calculator extends React.Component {
 		      input: {
 		        valueA: "",
 		       	valueB: "",
-		       	operation: "",
-		       	result: ""
-		      }
+		       	operation: ""
+		      },
+		      result: ""
 		    };
 		this.handleInputChange = this.handleInputChange.bind(this);
     	this.onSumbit = this.onSumbit.bind(this);
+    	this.getAPIPath = this.getAPIPath.bind(this);
+    	this.inputValidation = this.inputValidation.bind(this);
 
 	}
 
@@ -70,13 +72,18 @@ class Calculator extends React.Component {
 			alert("Must provide an operation");
 			return false;
 		}
+		return true;
 	}
 
 	onSumbit(e)
 	{
 		e.preventDefault();
-		console.log(this.props);
+		console.log(this.state.input);
 		
+		if(!this.inputValidation())
+		{
+			return false;
+		}
 		// fill all hidden values
 		var params = {
 			valueA: this.state.input.valueA,
@@ -86,12 +93,14 @@ class Calculator extends React.Component {
 		var clientFetch = new ClientFetch();
 		var apiPath = this.getAPIPath();
 		clientFetch.fetch(apiPath + '?a=' + this.state.input.valueA + '&b=' + this.state.input.valueB, {method: "GET"})
-			.then(result => {
-		        
+			.then(res => {
+		        var newState = {};
+				newState["result"] = {$set: res.result};
+
+				this.setState(update(this.state, newState));
 		        return true;
       		})
       		.catch(error => {
-      			console.log(error);
       			throw error;
       		});
 	}
@@ -106,20 +115,23 @@ class Calculator extends React.Component {
 					<span>Please input the second number:</span><input type="number" name="valueB" onChange={this.handleInputChange} required="required"/><br/>
 					<div>
 					    <input type="radio" id="operation1" name="operation" value="ADD" onChange={this.handleInputChange} />
-					    <label for="operation1">Addition</label>
+					    <label>Addition</label>
 
 					    <input type="radio" id="operation2" name="operation" value="SUB" onChange={this.handleInputChange} />
-					    <label for="operation2">Subtraction</label>
+					    <label>Subtraction</label>
 
 					    <input type="radio" id="operation3" name="operation" value="MUL" onChange={this.handleInputChange} />
-					    <label for="operation3">Multiplication</label>
+					    <label>Multiplication</label>
 
 					    <input type="radio" id="operation3" name="operation" value="DIV" onChange={this.handleInputChange} />
-					    <label for="operation3">Division</label>
+					    <label>Division</label>
 					</div>
 					
 			        <button onClick={this.onSumbit}>Calculate</button>
 				</form>
+				<div>
+					<span id="calcResult">{this.state.result}</span>
+				</div>
 			</div>
 			
 		)
