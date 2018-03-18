@@ -114,20 +114,20 @@ class Calculator extends React.Component {
 					<span>The first number:</span><input type="number" name="valueA" onChange={this.handleInputChange} required="required"/><br/>
 					<div>
 					    <input type="radio" id="operation1" name="operation" value="ADD" onChange={this.handleInputChange} />
-					    <label>+</label>
+					    <label className="calc-label">+</label>
 
 					    <input type="radio" id="operation2" name="operation" value="SUB" onChange={this.handleInputChange} />
-					    <label>-</label>
+					    <label className="calc-label">-</label>
 
 					    <input type="radio" id="operation3" name="operation" value="MUL" onChange={this.handleInputChange} />
-					    <label>*</label>
+					    <label className="calc-label">x</label>
 
 					    <input type="radio" id="operation3" name="operation" value="DIV" onChange={this.handleInputChange} />
-					    <label>/</label>
+					    <label className="calc-label">/</label>
 					</div>
 					<span>The second number:</span><input type="number" name="valueB" onChange={this.handleInputChange} required="required"/><br/>
 					
-			        <button onClick={this.onSumbit}>Calculate</button>
+			        <button id="calcBtn" onClick={this.onSumbit}>Calculate</button>
 				</form>
 				<div>
 					<span id="calcResult">Result: {this.state.result}</span>
