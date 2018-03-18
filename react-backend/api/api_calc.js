@@ -6,7 +6,7 @@ module.exports.calcAdd = function (req, res, next) {
 	var b = req.query.b;
 
 	var result = {};
-	if(!isNaN(a + '') || !isNaN(b + ''))
+	if(isNaN(a + '') || isNaN(b + ''))
 	{	
 		result = {
 			result: "Not a number"
