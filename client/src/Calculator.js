@@ -111,7 +111,7 @@ class Calculator extends React.Component {
 		return(
 			<div id="calcContainer">
 				<form id="calcForm">
-					<span>The first number:</span><input type="number" name="valueA" onChange={this.handleInputChange} required="required"/><br/>
+					<span className="calc-input-instruction">The first number:</span><input type="number" name="valueA" onChange={this.handleInputChange} required="required"/><br/>
 					<div>
 					    <input type="radio" id="operation1" name="operation" value="ADD" onChange={this.handleInputChange} />
 					    <label className="calc-label">+</label>
@@ -125,7 +125,7 @@ class Calculator extends React.Component {
 					    <input type="radio" id="operation3" name="operation" value="DIV" onChange={this.handleInputChange} />
 					    <label className="calc-label">/</label>
 					</div>
-					<span>The second number:</span><input type="number" name="valueB" onChange={this.handleInputChange} required="required"/><br/>
+					<span className="calc-input-instruction">The second number:</span><input type="number" name="valueB" onChange={this.handleInputChange} required="required"/><br/>
 					
 			        <button id="calcBtn" onClick={this.onSumbit}>Calculate</button>
 				</form>
