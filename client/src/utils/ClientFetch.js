@@ -10,8 +10,7 @@ class ClientFetch {
 
         this.domain = domain || 'http://localhost:3000' // API server domain
         this.fetch = this.fetch.bind(this) // React binding stuff
-        this.getProfile = this.getProfile.bind(this)
-
+        
         ClientFetch.instance = this;
     }
 
